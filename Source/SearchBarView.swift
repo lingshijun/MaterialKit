@@ -37,15 +37,6 @@ public class SearchBarView : MaterialView, UITextFieldDelegate {
 	public var editingBackgroundColor: UIColor?
 	
 	/**
-		:name:	statusBarStyle
-	*/
-	public var statusBarStyle: MaterialStatusBarStyle! {
-		didSet {
-			UIApplication.sharedApplication().setStatusBarStyle(.LightContent == statusBarStyle ? .LightContent : .Default, animated: true)
-		}
-	}
-	
-	/**
 		:name:	textField
 	*/
 	public private(set) lazy var textField: UITextField = UITextField()

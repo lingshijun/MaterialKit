@@ -20,15 +20,6 @@ import UIKit
 
 public class NavigationBarView : MaterialView {
 	/**
-		:name:	statusBarStyle
-	*/
-	public var statusBarStyle: MaterialStatusBarStyle! {
-		didSet {
-			UIApplication.sharedApplication().setStatusBarStyle(.LightContent == statusBarStyle ? .LightContent : .Default, animated: true)
-		}
-	}
-	
-	/**
 		:name:	contentInsets
 	*/
 	public var contentInsets: MaterialInsets = .None {

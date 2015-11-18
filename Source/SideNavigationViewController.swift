@@ -222,7 +222,6 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 			let h: CGFloat = v.height
 			let d: Double = Double(0 == velocity ? animationDuration : fmax(0.1, fmin(1, Double(v.x / velocity))))
 			
-			toggleStatusBar(true)
 			MaterialAnimation.animationWithDuration(d, animations: {
 				v.position = CGPointMake(w / 2, h / 2)
 				self.backdropLayer.hidden = false
@@ -241,7 +240,6 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 			let h: CGFloat = v.height
 			let d: Double = Double(0 == velocity ? animationDuration : fmax(0.1, fmin(1, Double(v.x / velocity))))
 			
-			toggleStatusBar(false)
 			MaterialAnimation.animationWithDuration(d, animations: {
 				v.position = CGPointMake(-w / 2, h / 2)
 				self.backdropLayer.hidden = true
@@ -310,7 +308,6 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 			switch recognizer.state {
 			case .Began:
 				originalPosition = v.position
-				toggleStatusBar(true)
 				backdropLayer.hidden = false
 			case .Changed:
 				let translation: CGPoint = recognizer.translationInView(v)
@@ -367,23 +364,6 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 		if let g = tap {
 			view.removeGestureRecognizer(g)
 			tap = nil
-		}
-	}
-	
-	//
-	//	:name:	toggleStatusBar
-	//
-	private func toggleStatusBar(hide: Bool = false) {
-		if hideStatusBar {
-			if isViewBasedAppearance {
-				UIApplication.sharedApplication().setStatusBarHidden(hide, withAnimation: .Slide)
-			} else {
-				dispatch_async(dispatch_get_main_queue(), {
-					if let w = UIApplication.sharedApplication().keyWindow {
-						w.windowLevel = hide ? UIWindowLevelStatusBar + 1 : 0
-					}
-				})
-			}
 		}
 	}
 	
