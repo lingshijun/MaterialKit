@@ -195,7 +195,6 @@ public class NavigationBarView : MaterialView {
 	public override func layoutSublayersOfLayer(layer: CALayer) {
 		super.layoutSublayersOfLayer(layer)
 		if self.layer == layer {
-			super.layoutSublayersOfLayer(layer)
 			if let v: MaterialLayer = statusBarLayer {
 				v.width = bounds.width
 				v.height = UIApplication.sharedApplication().statusBarFrame.height
@@ -316,7 +315,7 @@ public class NavigationBarView : MaterialView {
 					h += "[\(k)]"
 					
 					addSubview(b)
-					MaterialLayout.alignFromBottom(self, child: b, bottom: contentInsetsRef.bottom + leftButtonsInsetsRef.bottom)
+					MaterialLayout.alignFromTop(self, child: b, top: contentInsetsRef.top + leftButtonsInsetsRef.top)
 				}
 				
 				addConstraints(MaterialLayout.constraint(h, options: [], metrics: ["left" : contentInsetsRef.left + leftButtonsInsetsRef.left, "left_right" : leftButtonsInsetsRef.left + leftButtonsInsetsRef.right], views: d))
@@ -344,7 +343,7 @@ public class NavigationBarView : MaterialView {
 					}
 					
 					addSubview(b)
-					MaterialLayout.alignFromBottom(self, child: b, bottom: contentInsetsRef.bottom + rightButtonsInsetsRef.bottom)
+					MaterialLayout.alignFromTop(self, child: b, top: contentInsetsRef.top + rightButtonsInsetsRef.top)
 				}
 				
 				addConstraints(MaterialLayout.constraint(h + "|", options: [], metrics: ["right" : contentInsetsRef.right + rightButtonsInsetsRef.right, "right_left" : rightButtonsInsetsRef.right + rightButtonsInsetsRef.left], views: d))

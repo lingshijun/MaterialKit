@@ -178,11 +178,11 @@ public extension MaterialTheme.navigationBarView {
 	public static var shadowColor: UIColor = MaterialColor.black
 	
 	// shape
-	public static var contentInsetsRef: MaterialInsetsType = MaterialInsetsToValue(.Square2)
-	public static var titleLabelInsetsRef: MaterialInsetsType = (top: 8, left: 0, bottom: 0, right: 0)
+	public static var contentInsetsRef: MaterialInsetsType = (top: UIApplication.sharedApplication().statusBarFrame.height, left: 0, bottom: 0, right: 0)
+	public static var titleLabelInsetsRef: MaterialInsetsType = MaterialInsetsToValue(.None)
 	public static var detailLabelInsetsRef: MaterialInsetsType = MaterialInsetsToValue(.None)
-	public static var leftButtonsInsetsRef: MaterialInsetsType = (top: 8, left: 0, bottom: 0, right: 0)
-	public static var rightButtonsInsetsRef: MaterialInsetsType = (top: 8, left: 0, bottom: 0, right: 0)
+	public static var leftButtonsInsetsRef: MaterialInsetsType = (top: 4, left: 0, bottom: 0, right: 0)
+	public static var rightButtonsInsetsRef: MaterialInsetsType = (top: 4, left: 0, bottom: 0, right: 0)
 	
 	// border
 	public static var borderWidth: MaterialBorder = .None
