@@ -19,12 +19,35 @@
 import UIKit
 
 public class NavigationBarView : MaterialView {
+	//
+	//	:name: statusBarLayer
+	//
+	private var statusBarLayer: MaterialLayer?
+	
 	/**
 		:name:	statusBarStyle
 	*/
 	public var statusBarStyle: MaterialStatusBarStyle! {
 		didSet {
 			UIApplication.sharedApplication().setStatusBarStyle(.LightContent == statusBarStyle ? .LightContent : .Default, animated: true)
+		}
+	}
+	
+	/**
+		:name:	statusBarColor
+	*/
+	public var statusBarColor: UIColor? {
+		didSet {
+			if let v: UIColor = statusBarColor {
+				if nil == statusBarLayer {
+					statusBarLayer = MaterialLayer(frame: CGRectMake(0, 0, bounds.width, UIApplication.sharedApplication().statusBarFrame.height))
+					layer.addSublayer(statusBarLayer!)
+				}
+				statusBarLayer!.backgroundColor = v.CGColor
+			} else {
+				statusBarLayer?.removeFromSuperlayer()
+				statusBarLayer = nil
+			}
 		}
 	}
 	
@@ -163,6 +186,20 @@ public class NavigationBarView : MaterialView {
 				}
 			}
 			reloadView()
+		}
+	}
+	
+	/**
+		:name:	layoutSublayersOfLayer
+	*/
+	public override func layoutSublayersOfLayer(layer: CALayer) {
+		super.layoutSublayersOfLayer(layer)
+		if self.layer == layer {
+			super.layoutSublayersOfLayer(layer)
+			if let v: MaterialLayer = statusBarLayer {
+				v.width = bounds.width
+				v.height = UIApplication.sharedApplication().statusBarFrame.height
+			}
 		}
 	}
 	
