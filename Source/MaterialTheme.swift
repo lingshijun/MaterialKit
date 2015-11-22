@@ -181,8 +181,8 @@ public extension MaterialTheme.navigationBarView {
 	public static var contentInsetsRef: MaterialInsetsType = (top: UIApplication.sharedApplication().statusBarFrame.height, left: 0, bottom: 0, right: 0)
 	public static var titleLabelInsetsRef: MaterialInsetsType = MaterialInsetsToValue(.None)
 	public static var detailLabelInsetsRef: MaterialInsetsType = MaterialInsetsToValue(.None)
-	public static var leftButtonsInsetsRef: MaterialInsetsType = (top: 4, left: 0, bottom: 0, right: 0)
-	public static var rightButtonsInsetsRef: MaterialInsetsType = (top: 4, left: 0, bottom: 0, right: 0)
+	public static var leftButtonsInsetsRef: MaterialInsetsType = (top: 4, left: 4, bottom: 0, right: 0)
+	public static var rightButtonsInsetsRef: MaterialInsetsType = (top: 4, left: 0, bottom: 0, right: 4)
 	
 	// border
 	public static var borderWidth: MaterialBorder = .None
